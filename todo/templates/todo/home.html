@@ -1,0 +1,81 @@
+{% extends '_base.html' %}
+
+
+{% block title %}TODO LIST{% endblock title %}
+
+{% block context %}
+<div class="container page-todo bootstrap snippets bootdeys">
+    <div class="col-sm-7 tasks">
+        <div class="task-list">
+            <h1>To Do List</h1>
+            {% for note in notes %}
+            {% if 'H' in note.status %}
+            <div class="priority high"><span>high priority</span></div>
+            <div class="task high">
+                <div class="desc">
+                    <div class="title">{{note.title}}</div>
+                    <div>{{note.text}}</div>
+                </div>
+                <div class="time">
+                    <div class="date">{{note.created}}</div>
+                    
+                    <button class="button-42" role="button"><a href='{% url 'delete' note.id %}' style="color:#ffffff;">delete</a></button>
+                   
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+            {% for note in notes %}
+            {% if "M" in note.status %}
+                <div class="priority medium"><span>medium priority</span></div>
+        
+                <div class="task medium">
+                    <div class="desc">
+                        <div class="title">{{note.title}}</div>
+                        <div>{{note.text}}</div>
+                    </div>
+                    <div class="time">
+                        <div class="date">{{note.created}}</div>
+                        <button class="button-42" role="button"><a href='{% url 'delete' note.id %}' style="color:#ffffff;">delete</a></button>
+                     
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+
+                {% for note in notes  %}
+                {% if "L" in note.status %}
+                <div class="priority low"><span>low priority</span></div>
+        
+                <div class="task low">
+                    <div class="desc">
+                        <div class="title">{{note.title}}</div>
+                        <div>{{note.text}}</div>
+                    </div>
+                    <div class="time">
+                        <div class="date">{{note.created}}</div>
+                        <button class="button-42" role="button"><a href='{% url 'delete' note.id %}' style="color:#ffffff;">delete</a></button>
+                        
+                        
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                
+                <div class="clearfix"></div>		
+            </div>		
+        </div>
+        </div>
+
+
+{% endblock context %}
+
+
+
+
+
+
+
+
+
